@@ -66,8 +66,8 @@ public class ReservationServiceImpl implements ReservationService {
 		ReservationEntity existingReservation = reservationRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("ReservationEntity", "Id", id));
 		existingReservation.setActive(reservation.isActive());
-		existingReservation.setDateCreate(reservation.getDateCreate());
-		existingReservation.setLastUpdate(reservation.getLastUpdate());
+		existingReservation.setDate_created(reservation.getDate_created());
+		existingReservation.setLast_updated(reservation.getLast_updated());
 		existingReservation.setPayment(reservation.getPayment());
 		existingReservation.setDeposite(reservation.getDeposite());
 

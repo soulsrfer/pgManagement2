@@ -52,11 +52,11 @@ public class ReservationEntity {
 
 	@Column(name = "date_created")
 	@CreationTimestamp
-	private Date dateCreate;
+	private Date date_created;
 
 	@Column(name = "last_updated")
 	@UpdateTimestamp
-	private Date lastUpdate;
+	private Date last_updated;
 
 	@Column(name = "active")
 	private boolean active;
@@ -77,9 +77,11 @@ public class ReservationEntity {
 
 	@Override
 	public String toString() {
-		return "ReservationEntity [id=" + id + ", payment=" + payment + ", deposite=" + deposite + ", dateCreate="
-				+ dateCreate + ", lastUpdate=" + lastUpdate + ", active=" + active + ", bed=" + bed + ", user=" + user
-				+ "]";
+		return "ReservationEntity [id=" + id + ", payment=" + payment + ", deposite=" + deposite + ", date_created="
+				+ date_created + ", last_updated=" + last_updated + ", active=" + active + ", bed=" + bed + ", user="
+				+ user + "]";
 	}
+
+	
 
 }

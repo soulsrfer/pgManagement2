@@ -1,7 +1,6 @@
 package com.gopalpg.pgManagement.entity;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -39,10 +38,5 @@ public class RoomEntity {
 	public String toString() {
 		return "RoomEntity [id=" + id + ", capacity=" + capacity + ", rent=" + rent + ", beds=" + beds + "]";
 	}
-
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
-//	private Set<ReservationEntity> roomReserve;
-	
-	
 
 }
