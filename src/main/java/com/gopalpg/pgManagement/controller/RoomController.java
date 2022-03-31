@@ -41,20 +41,20 @@ public class RoomController {
 	}
 
 	// build get Room by id REST API
-	@GetMapping("/getRoom/{id}")
-	public ResponseEntity<RoomEntity> getRoomById(@PathVariable(value = "id") Long RoomId) {
+	@GetMapping("/getRoom/{roomId}")
+	public ResponseEntity<RoomEntity> getRoomById(@PathVariable(value = "roomId") Long RoomId) {
 		return new ResponseEntity<RoomEntity>(roomService.getRoomById(RoomId), HttpStatus.OK);
 	}
 
 	// build update User REST API
-	@PutMapping("/updateRoom/{id}")
-	public ResponseEntity<RoomEntity> updateRoom(@PathVariable("id") Long RoomId, @RequestBody RoomEntity room) {
+	@PutMapping("/updateRoom/{roomId}")
+	public ResponseEntity<RoomEntity> updateRoom(@PathVariable("roomId") Long RoomId, @RequestBody RoomEntity room) {
 		return new ResponseEntity<RoomEntity>(roomService.updateRoom(room, RoomId), HttpStatus.OK);
 	}
 	
 	//build update Room REST API
-	@DeleteMapping("/deleteRoom/{id}")
-	public ResponseEntity<String> deleteRoom(@PathVariable(value = "id") Long RoomId){
+	@DeleteMapping("/deleteRoom/{roomId}")
+	public ResponseEntity<String> deleteRoom(@PathVariable(value = "roomId") Long RoomId){
 		roomService.deleteRoom(RoomId);
 		return new ResponseEntity<String>("Room deleted successfully", HttpStatus.OK);
 	}

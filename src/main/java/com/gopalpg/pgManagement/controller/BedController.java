@@ -29,8 +29,8 @@ public class BedController {
 
 	// build create bed REST API
 
-	@PostMapping(value = "/createBed/{id}")
-	public ResponseEntity<BedEntity> saveBed(@PathVariable(value = "id") Long id, @RequestBody BedEntity bed) {
+	@PostMapping(value = "/createBed/{roomId}")
+	public ResponseEntity<BedEntity> saveBed(@PathVariable(value = "roomId") Long id, @RequestBody BedEntity bed) {
 		return new ResponseEntity<BedEntity>(bedService.saveBed(bed, id), HttpStatus.CREATED);
 	}
 
@@ -41,20 +41,20 @@ public class BedController {
 	}
 
 	// build get Bed by id REST API
-	@GetMapping("/getBed/{id}")
-	public ResponseEntity<BedEntity> getBedById(@PathVariable(value = "id") Long BedId) {
+	@GetMapping("/getBed/{bedId}")
+	public ResponseEntity<BedEntity> getBedById(@PathVariable(value = "bedId") Long BedId) {
 		return new ResponseEntity<BedEntity>(bedService.getBedById(BedId), HttpStatus.OK);
 	}
 	
-	//build update User REST API
-	@PutMapping("/updateBed/{id}")
-	public ResponseEntity<BedEntity> updateBed(@PathVariable("id") Long BedId, @RequestBody BedEntity bed){
+	//build update bed REST API
+	@PutMapping("/updateBed/{bedId}")
+	public ResponseEntity<BedEntity> updateBed(@PathVariable("bedId") Long BedId, @RequestBody BedEntity bed){
 		return new ResponseEntity<BedEntity>(bedService.updateBed(bed, BedId), HttpStatus.OK);
 	}
 	
 	//build delete Bed REST API
-	@DeleteMapping("/deleteBed/{id}")
-	public ResponseEntity<String> deleteBed(@PathVariable(value = "id") Long BedId){
+	@DeleteMapping("/deleteBed/{bedId}")
+	public ResponseEntity<String> deleteBed(@PathVariable(value = "bedId") Long BedId){
 		bedService.deleteBed(BedId);
 		return new ResponseEntity<String>("Bed deleted successfully", HttpStatus.OK);
 	}

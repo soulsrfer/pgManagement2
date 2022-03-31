@@ -29,8 +29,8 @@ public class ReservationController {
 
 	// build create Reservation REST API
 
-	@PostMapping(value = "/createReservation/{id}")
-	public ResponseEntity<ReservationEntity> saveReservation(@PathVariable(value = "id") Long id,
+	@PostMapping(value = "/createReservation/{userId}")
+	public ResponseEntity<ReservationEntity> saveReservation(@PathVariable(value = "userId") Long id,
 			@RequestBody ReservationEntity reservation) {
 		return new ResponseEntity<ReservationEntity>(reservationService.saveReservation(reservation, id),
 				HttpStatus.CREATED);
@@ -44,29 +44,29 @@ public class ReservationController {
 	}
 
 	// build get Reservation by id REST API
-	@GetMapping("/getReservation/{id}")
-	public ResponseEntity<ReservationEntity> getReservationbyId(@PathVariable(value = "id") Long ReservationId) {
+	@GetMapping("/getReservation/{reservationId}")
+	public ResponseEntity<ReservationEntity> getReservationbyId(@PathVariable(value = "reservationId") Long ReservationId) {
 		return new ResponseEntity<ReservationEntity>(reservationService.getReservationById(ReservationId),
 				HttpStatus.OK);
 	}
 
 	// build update Reservation REST API
-	@PutMapping("/updateReservation/{id}")
-	public ResponseEntity<ReservationEntity> updateReservation(@PathVariable(value = "id") Long ReservationId,
+	@PutMapping("/updateReservation/{reservationId}")
+	public ResponseEntity<ReservationEntity> updateReservation(@PathVariable(value = "reservationId") Long ReservationId,
 			@RequestBody ReservationEntity reservation) {
 		return new ResponseEntity<ReservationEntity>(reservationService.updateReservation(reservation, ReservationId),
 				HttpStatus.OK);
 	}
 	//build delete Reservation REST API
-	@DeleteMapping("/deleteReservation/{id}")
-	public ResponseEntity<String> deleteReservation(@PathVariable(value = "id") Long ReservationId){
+	@DeleteMapping("/deleteReservation/{reservationId}")
+	public ResponseEntity<String> deleteReservation(@PathVariable(value = "reservationId") Long ReservationId){
 		reservationService.deleteReservation(ReservationId);
 		return new ResponseEntity<String>("Reservation deleted successfully", HttpStatus.OK);
 	}
 	
 	//build assign bed to reservation REST API
-	@PutMapping("/reserveBed/{ReservationId}/{BedId}")
-	public ResponseEntity<ReservationEntity> reserveBed(@PathVariable(value = "ReservationId") Long ReserveId,@PathVariable(value = "BedId") Long BedId){
+	@PutMapping("/reserveBed/{reservationId}/{bedId}")
+	public ResponseEntity<ReservationEntity> reserveBed(@PathVariable(value = "reservationId") Long ReserveId,@PathVariable(value = "bedId") Long BedId){
 		return new ResponseEntity<ReservationEntity>(reservationService.reserveBed(ReserveId, BedId), HttpStatus.OK);
 	}
 	

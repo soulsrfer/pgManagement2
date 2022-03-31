@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.gopalpg.pgManagement.service.UserService;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("*")
 public class UserController {
 
 	private UserService userService;
@@ -41,20 +43,20 @@ public class UserController {
 	}
 
 	//build get user by id REST API
-	@GetMapping("/getUser/{id}")
-	public ResponseEntity<UserEntity> getUserById(@PathVariable(value = "id") Long UserId){
+	@GetMapping("/getUser/{userId}")
+	public ResponseEntity<UserEntity> getUserById(@PathVariable(value = "userId") Long UserId){
 		return new ResponseEntity<UserEntity>(userService.getUserById(UserId),HttpStatus.OK);
 	}
 	
 	//build update User REST API
-	@PutMapping("/updateUser/{id}")
-	public ResponseEntity<UserEntity> updateUser(@PathVariable("id") Long UserId, @RequestBody UserEntity user){
+	@PutMapping("/updateUser/{userId}")
+	public ResponseEntity<UserEntity> updateUser(@PathVariable("userId") Long UserId, @RequestBody UserEntity user){
 		return new ResponseEntity<UserEntity>(userService.updateUser(user, UserId), HttpStatus.OK);
 	}
 	
 	//build delete User REST API
-	@DeleteMapping("/deleteUser/{id}")
-	public ResponseEntity<String> deleteUser(@PathVariable(value = "id") Long UserId){
+	@DeleteMapping("/deleteUser/{userId}")
+	public ResponseEntity<String> deleteUser(@PathVariable(value = "userId") Long UserId){
 		userService.deleteUser(UserId);
 		return new ResponseEntity<String>("User deleted successfully", HttpStatus.OK);
 	}
